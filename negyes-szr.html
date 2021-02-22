@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link REL=StyleSheet HREF="style.css" TYPE="text/css">
+	<title>WikiNow - Négyes Számrendszer</title>
+</head>
+<body onload="fill_in_empty()">
+	<button class="button" onclick="window.location.href='index.html';">Vissza</button> 
+
+	<h1>A négyes számrendszer</h1>
+
+	<p>
+		A négyes számrendszer olyan helyiérték-jelölő számrendszer, ami négy számjeggyel ábrázolja a számokat, az arab számírásban 0, 1, 2 és 3 jegyekkel. 
+	</p>
+
+	<h2>Átváltása</h2>
+
+    <ul>
+		<li>
+			<button class="h2-box">Kettes számrendszerbe</button><br>
+			<div id="p-alt">
+				Mivel a számrendszer alapjául szolgáló 4-es szám a 2 négyzete,<br>
+				kettes számrendszerre átváltható úgy, hogy minden számjegyet lecserélünk annak bináris megfelelőjére:<br>
+				<table width="10%">
+					<tr>
+						<th>3</th> <th>0</th> <th>2</th> <th>1</th> <th>0</th>
+					</tr>
+					<tr>
+						<th>11</th> <th>00</th> <th>10</th> <th>01</th> <th>00<sub>2</sub></th>
+					</tr>
+				</table><br>
+				vagyis <inline id="highlight">3 0 2 1 0 4 = 11 00 10 01 00<sub>2</sub></inline>.
+			</div>
+			</li>
+			<li>
+			<button class="h2-box">Kettes számrendszerből</button>
+			<p>
+				Az eljárás az előbbi fordítottja. Osszuk a biteket hátulról kezdve párokra,<br>
+				és helyettesítsünk minden párt négyes számrendszerbeli alakjával.<br>
+				Hasonlóan lehet a négyes számrendszerbeli számokat tizenhatos számrendszerbe átírni. 
+			</p>
+		</li>
+	</ul>
+
+	<h2>Oszthatósági szabály</h2>
+
+	<p>
+		A négyes számrendszer párütős (lásd Páros és páratlan számok) számrendszer, ahogy a többi páros alapú számrendszer. Ez azt jelenti, hogy az utolsó számjegyből tudni lehet, hogy a szám páros-e, vagy páratlan.<br><br>
+		A páratlan alapú számrendszerek párérintkezősek, azaz a számjegyek összegéből tudhatjuk, hogy a szám osztható-e 2-vel, és nem feltétlenül egyezik meg az utolsó számjegy párosságával. 	
+	</p>
+
+	<br>
+	<button style="color: rgb(89, 248, 232); background: transparent;margin-top: -30px;border-top: 2px; border-right: 0px; border-bottom: 0px; border-left: 0px; border-style: dashed; padding: 4px;">                                                                                                                                                                                                                                                                                                                                                                        </button>
+	<br>
+	<button class="button" onclick="window.location.href='egyes-szer.html';">Egyes</button>
+	<button class="button" onclick="window.location.href='kettes-szr.html';">Kettes</button>
+	<button class="button" onclick="window.location.href='harmas-szr.html';">Hármas</button>
+	<button class="button-no-click">Négyes</button>
+	<button class="button" onclick="window.location.href='otos-szr.html';">Ötös</button>
+	<button class="button" onclick="window.location.href='hatos-szr.html';">Hatos</button>
+	<button class="button" onclick="window.location.href='hetes-szr.html';">Hetes</button>
+	<button class="button" onclick="window.location.href='nyolcas-szr.html';">Nyolcas</button>
+	<button class="button" onclick="window.location.href='tizes-szr.html';">Tízes</button>
+	<button class="button" onclick="window.location.href='tizenkettes-szr.html';">Tizenkettes</button>
+	<button class="button" onclick="window.location.href='tizenhatos-szr.html';">Tizenhatos</button>
+	<button class="button" onclick="window.location.href='huszas-szr.html';">Húszas</button>
+	<button class="button" onclick="window.location.href='hatvanas-szr.html';">Hatvanas</button>
+	<br>
+	<br>
+	<a href="https://hu.wikipedia.org/wiki/Négyes_sz%C3%A1mrendszer"><button style="margin-left: 90%;" class="button-wiki"> Forrás: wikipédia</button></a>
+	    
+</body>
+<script src="script.js"></script>
+</html>

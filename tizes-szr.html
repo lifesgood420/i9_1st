@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link REL=StyleSheet HREF="style.css" TYPE="text/css">
+	<title>WikiNow - Tízes Számrendszer</title>
+</head>
+<body onload="fill_in_empty()">
+	<button class="button" onclick="window.location.href='index.html';">Vissza</button> 
+
+	<h1>A tízes számrendszer</h1>
+
+	<h2>Oszthatósági szabályok</h2>
+
+	<div id="p-alt" style="width: max-content;">
+		<un>
+		A tíz osztói a kettő és az öt, így ezek hatványaira adható a legegyszerűbb oszthatósági szabály:<br>
+			<li>
+				2<sup>n</sup> illetve 5<sup>n</sup> akkor oszt egy számot, ha az utolsó <b>n</b> jegyéből képzett számot osztja.<br>
+				Speciálisan, a páros számok utolsó számjegye 0, 2, 4, 6 vagy 8, az öttel oszthatóké pedig 0 vagy 5.
+			</li>
+			<br>
+			<br>
+			A három osztója 10-1-nek, így rá is egyszerű oszthatósági szabály adható:<br>
+			<li>
+				egy szám pontosan akkor osztható hárommal, ha a számjegyeinek összege osztható vele.<br>
+				Ugyanez a kilenccel való oszthatóságra is vonatkozó szabály. 
+			</li>
+		</un>
+	</div>
+
+	<h2>Tizedes törtek</h2>
+
+	<div id="p-alt" style="width: max-content;">
+
+		A racionális és valós számokat tizedes törtként fejezhetjük ki: az összegben a tíz negatív kitevőjű hatványait is felhasználjuk.<br>
+		Hasonlóan más helyiértékes számrendszerekhez, minden számnak van egy végtelen tizedestört felírása, és azoknak a racionális számoknak,<br>
+		amiknek a nevezőjében egyszerűsítés után csak kettővel és öttel osztható szám szerepel, van egy véges tizedestört felírásuk is. 
+
+	</div>
+
+	<br>
+	<button style="color: rgb(89, 248, 232); background: transparent;margin-top: -30px;border-top: 2px; border-right: 0px; border-bottom: 0px; border-left: 0px; border-style: dashed; padding: 4px;">                                                                                                                                                                                                                                                                                                                                                                        </button>
+	<br>
+	<button class="button" onclick="window.location.href='egyes-szer.html';">Egyes</button>
+	<button class="button" onclick="window.location.href='kettes-szr.html';">Kettes</button>
+	<button class="button" onclick="window.location.href='harmas-szr.html';">Hármas</button>
+	<button class="button" onclick="window.location.href='negyes-szr.html';">Négyes</button>
+	<button class="button" onclick="window.location.href='otos-szr.html';">Ötös</button>
+	<button class="button" onclick="window.location.href='hatos-szr.html';">Hatos</button>
+	<button class="button" onclick="window.location.href='hetes-szr.html';">Hetes</button>
+	<button class="button" onclick="window.location.href='nyolcas-szr.html';">Nyolcas</button>
+	<button class="button-no-click">Tízes</button>
+	<button class="button" onclick="window.location.href='tizenkettes-szr.html';">Tizenkettes</button>
+	<button class="button" onclick="window.location.href='tizenhatos-szr.html';">Tizenhatos</button>
+	<button class="button" onclick="window.location.href='huszas-szr.html';">Húszas</button>
+	<button class="button" onclick="window.location.href='hatvanas-szr.html';">Hatvanas</button>
+	<br>
+	<br>
+	<a href="https://hu.wikipedia.org/wiki/Tízes_sz%C3%A1mrendszer"><button style="margin-left: 90%;" class="button-wiki"> Forrás: wikipédia</button></a>
+    
+</body>
+<script src="script.js"></script>
+</html>

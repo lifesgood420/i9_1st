@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link REL=StyleSheet HREF="style.css" TYPE="text/css">
+	<title>WikiNow - Tizenkettes Számrendszer</title>
+</head>
+<body onload="fill_in_empty()">
+	<button class="button" onclick="window.location.href='index.html';">Vissza</button> 
+
+	<h1>A tizenkettes számrendszer</h1>
+
+	<div id="p-alt">
+
+		<ul>
+				A tizenkettes (duodecimális) számrendszer a tizenkettes számon alapuló számrendszer, amely ennyi számjegy segítségével ábrázolja a számokat:
+			<li style="border-style: dashed; border-width: 2px; padding: 5px;">
+				0-tól 9-ig az összes arab számmal, utána a latin ábécé első két betűjével: a 10-es számnak az "A", míg a 11-esnek a "B" betű felel meg.
+			</li>
+			<br>
+			<li style="border-style: dashed; border-width: 2px; padding: 5px;">
+				Egyes vélemények szerint a tucat fogalom használata, illetve a régi angol pénz- és mértékrendszer egy hajdani tizenkettes számrendszerre vezethető vissza.
+			</li>	
+		</ul>
+
+		Mivel a tizenkettes számnak több osztója van (2, 3, 4, 6), mint a tízesnek (2 és 5),<br>
+		sokan vallják azt a nézetet, hogy az alkalmazása gyakorlati előnyökkel jár.<br><br>
+		Noha a tizenkettes számrendszer bevezetését szorgalmazó amerikai társaság (The Dozenal Society of America) csak 1944-ben,<br>
+		a hasonló nagy-britanniai társaság (The Dozenal Society of Great Britain) 1959-ben alakult meg.
+		<br><br>
+		Hasonló érvek már a 20. század első éveiben is megfogalmazódtak.
+	</div>
+
+	<h2>Gyakorlati előnyei a kör felosztásában</h2>
+
+	<div id="p-alt">
+		A (2, 3, 4, 6 oszthatóság) gyakorlati előnyei leginkább a navigációban és időmérésben jelentkeznek a kör praktikus felosztásával.
+		<br><br>
+		Megjegyzendő ugyanakkor, hogy a 45, 135, 225, 315 fokos ÉK, DK, DNy, ÉNy irányok nem illeszkednek a 12-es rendszerbe,<br>
+		csak ha a 12-t megszorozzuk 30-cal és 360-ra osztjuk a kört. Így be kellett iktatni az 5-öst.
+		<br><br>
+		Egyébiránt az óra számlapján is 12 db 30 fokos beosztás jelzi az órákat évezredek óta.
+		<br><br>
+	</div>
+
+	<extra style="margin-left: 26px; color: #6ee2f1">
+		A tizenkettes számrendszer szorzótáblája:
+		<table style="margin-left: 26px;">
+			<tr>	<th>1</th>	<th>2</th>	<th>3</th>	<th>4</th>	<th>5</th>	<th>6</th>	<th>7</th>	<th>8</th>	<th>9</th>	<th>A</th>	<th>B</th>	<th>10</th>	</tr>
+			<tr>	<th>2</th>	<td>4</td>	<td>6</td>	<td>8</td>	<td>A</td>	<td>10</td>	<td>12</td>	<td>14</td>	<td>16</td>	<td>18</td>	<td>1A</td>	<td>20</td>	</tr>
+			<tr>	<th>3</th>	<td>6</td>	<td>9</td>	<td>10</td>	<td>13</td>	<td>16</td>	<td>19</td>	<td>20</td>	<td>23</td>	<td>26</td>	<td>29</td>	<td>30</td>	</tr>
+			<tr>	<th>4</th>	<td>8</td>	<td>10</td>	<td>14</td>	<td>18</td>	<td>20</td>	<td>24</td>	<td>28</td>	<td>30</td>	<td>34</td>	<td>38</td>	<td>40</td>	</tr>
+			<tr>	<th>5</th>	<td>A</td>	<td>13</td>	<td>18</td>	<td>21</td>	<td>26</td>	<td>2B</td>	<td>34</td>	<td>39</td>	<td>42</td>	<td>47</td>	<td>50</td> </tr>
+			<tr>	<th>6</th>	<td>10</td>	<td>16</td>	<td>20</td>	<td>26</td>	<td>30</td>	<td>36</td>	<td>40</td>	<td>46</td>	<td>50</td>	<td>56</td>	<td>60</td>	</tr>
+			<tr>	<th>7</th>	<td>12</td>	<td>19</td>	<td>24</td>	<td>2B</td>	<td>36</td>	<td>41</td>	<td>48</td>	<td>53</td>	<td>5A</td>	<td>65</td>	<td>70</td>	</tr>
+			<tr>	<th>8</th>	<td>14</td>	<td>20</td>	<td>28</td>	<td>34</td>	<td>40</td>	<td>48</td>	<td>54</td>	<td>60</td>	<td>68</td>	<td>74</td>	<td>80</td> </tr>
+			<tr>	<th>9</th>	<td>16</td>	<td>23</td>	<td>30</td>	<td>39</td>	<td>46</td>	<td>53</td>	<td>60</td>	<td>69</td>	<td>76</td>	<td>83</td>	<td>90</td>	</tr>
+			<tr>	<th>A</th>	<td>18</td>	<td>26</td>	<td>34</td>	<td>42</td>	<td>50</td>	<td>5A</td>	<td>68</td>	<td>76</td>	<td>84</td>	<td>92</td>	<td>A0</td>	</tr>
+			<tr>	<th>B</th>	<td>1A</td>	<td>29</td>	<td>38</td>	<td>47</td>	<td>56</td>	<td>65</td>	<td>74</td>	<td>83</td>	<td>92</td>	<td>A1</td>	<td>B0</td>	</tr>
+			<tr>	<th>10</th>	<td>20</td>	<td>30</td>	<td>40</td>	<td>50</td>	<td>60</td>	<td>70</td>	<td>80</td>	<td>90</td>	<td>A0</td>	<td>B0</td>	<td>100</td>	</tr>
+		</table>
+	</extra>
+
+	<br>
+	<button style="color: rgb(89, 248, 232); background: transparent;margin-top: -30px;border-top: 2px; border-right: 0px; border-bottom: 0px; border-left: 0px; border-style: dashed; padding: 4px;">                                                                                                                                                                                                                                                                                                                                                                        </button>
+	<br>
+	<button class="button" onclick="window.location.href='egyes-szer.html';">Egyes</button>
+	<button class="button" onclick="window.location.href='kettes-szr.html';">Kettes</button>
+	<button class="button" onclick="window.location.href='harmas-szr.html';">Hármas</button>
+	<button class="button" onclick="window.location.href='negyes-szr.html';">Négyes</button>
+	<button class="button" onclick="window.location.href='otos-szr.html';">Ötös</button>
+	<button class="button" onclick="window.location.href='hatos-szr.html';">Hatos</button>
+	<button class="button" onclick="window.location.href='hetes-szr.html';">Hetes</button>
+	<button class="button" onclick="window.location.href='nyolcas-szr.html';">Nyolcas</button>
+	<button class="button" onclick="window.location.href='tizes-szr.html';">Tízes</button>
+	<button class="button-no-click">Tizenkettes</button>
+	<button class="button" onclick="window.location.href='tizenhatos-szr.html';">Tizenhatos</button>
+	<button class="button" onclick="window.location.href='huszas-szr.html';">Húszas</button>
+	<button class="button" onclick="window.location.href='hatvanas-szr.html';">Hatvanas</button>
+	<br>
+	<br>
+	<a href="https://hu.wikipedia.org/wiki/Tizenkettes_sz%C3%A1mrendszer"><button style="margin-left: 90%;" class="button-wiki"> Forrás: wikipédia</button></a>
+    
+</body>
+<script src="script.js"></script>
+</html>

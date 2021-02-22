@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link REL=StyleSheet HREF="style.css" TYPE="text/css">
+	<title>WikiNow - Kettes Számrendszer</title>
+</head>
+<body onload="fill_in_empty()">
+	<button class="button" onclick="window.location.href='index.html';">Vissza</button> 
+
+	<h1>A kettes számrendszer</h1>
+
+	<h2>Számolás kettes számrendszerben</h2>
+
+	<button class="h2-box">Összeadás</button>
+
+	<p>
+
+		A kettes számrendszerbeli összeadás a számítógépek világának legalapvetőbb művelete.<br>
+		Az A és a B pozitív számok úgy adhatók össze, mint a tízes számrendszerben, csak arra kell ügyelni,<br>
+		hogy az összegben nem jelenik meg a kettes (vagy a hármas).<br>
+		Ehelyett átvitel keletkezik, a tízes számrendszerbeli tízes túllépéséhez hasonlóan.<br>
+
+	</p>
+
+	<button class="h2-box">Kivonás</button>
+
+	<div id="p-alt">
+		A kivonás az összeadáshoz hasonlóan viselkedik.<br><br>
+
+		<table style="border-width: 0px;">
+			<tr><th>0 − 0 = 0</th><th>             -             </th></tr>
+			<tr><th>0 − 1 = −1</th><th>(a különbség 1, átvitel 1)</th></tr>
+			<tr><th>1 − 0 = 1</th><th>             -             </th></tr>
+			<tr><th>1 − 1 = 0</th><th>             -             </th></tr>
+			<tr><th>0 - 1 = 1</th><th>átvitellel = 0 az átvitel 1</th></tr>
+			<tr><th>1 - 1 = 1</th><th>átvitellel = 1 az átvitel 1</th></tr>
+		</table>
+	</div>
+		
+		<button class="h2-box">Szorzás</button>
+
+		<p>
+			A kettes számrendszerben hasonlóan lehet szorozni, mint tízes számrendszerben. Lényegesen egyszerűsíti a dolgokat, hogy csak 1 és 0 fordul elő számjegyekként. Arra kell ügyelni, hogy amikor a részszorzatokat összeadjuk, akkor kettes számrendszerben adunk össze.<br><br>
+			Áramköri szinten a szorzást is összeadó áramkörök valósítják meg, kihasználva, hogy a szorzás művelete lebontható sorozatos összeadásokra. Például a decimális 3x4=12 (4+4+4) kifejezést binárisra átírva kapjuk: 0011 x 0100 = 0100 + 0100 + 0100 = 1100
+		</p>
+	
+		<button class="h2-box">Osztás</button>
+
+		<p>
+			A tízes számrendszerhez hasonlóan lehet osztani. Ha az osztó nem kettőhatvány, akkor a hányados periodikus kettedestört lesz. A pontos érték ismeretéhez egy előszakasz + periódusig kell osztani.
+
+			A számítógépek csak egy bizonyos pontosságig végzik el ezt a műveletet.
+	
+			Hasonlóan lehet maradékosan is osztani.
+	
+			Az osztás műveletet először kivonások - majd összeadások - sorozatára bontjuk, a kivonásokat addig folytatjuk míg a kisebbítendő egyenlő vagy kisebb nem lesz a kivonandónál.<br><br>
+	
+			Például a decimális 8/2 = 4 ( 8 - 2 - 2 - 2 - 2 ). Az osztandóból kisebbítendő, az osztóból kivonandó lesz.<br><br>
+	
+			Osztás összeadással:<br>
+			11/4 = 2,75 ( 2x4 + 7x0,4 + 5x0,04 ). 1011/0100 = 10,11. A hányados 1-es helyiértékeivel vissza szorozva 10x0100 + 0.1x0100 + 0.01x0100 = 1011, ezzel megkaptuk az eredeti osztandónkat. Tehát az osztásból úgy lesz összeadás, hogy számoljuk hányszor tudjuk csökkenteni az osztandót az osztóval úgy, hogy a hányados ne legyen kisebb 0-nál, ha pont nullát kapnánk akkor vége a tevékenységnek, az eredmény a lépések száma. Ellenkező esetben maradékos osztásról van szó, és a maradékok helyiértékenként csökkenve állnak elő.<br><br>
+			
+			Az egészrészt megkaptuk az eddigi lépések összegeként, a tört rész úgy adódik, hogy az első negatív eredményű kivonásnál egy új lépést iktatunk be, majd az egész tevékenység kezdődik elölről. Ez az új lépés az, hogy a maradékot egy helyiértékkel balra toljuk - a számrendszer alapszámával beszorozzuk -, a fenti példából 11 - 4 = 7, 7 - 4 = 3, 3 - 4 = -1. 2 lépés, az egészrész 2.<br><br>
+	
+			Az utolsó lépés már negatív eredményt ad, nekünk a 3 a legkisebb nem negatív maradék, ezért ezt balra shifteljük (10-zel szorozzuk) és folytatjuk az eljárást azzal, hogy az új osztandónk a 30 lesz, az osztó nem változik viszont az eredményünk majd egy helyiértékkel kisebb, a törtrész első tagja lesz. 30 - 4 = 26, 26 - 4 = 22, 22 - 4 = 18, 18 - 4 = 14, 14 - 4 = 10, 10 - 4 = 6, 6 - 4 = 2, 2 - 4 = -2. 7 lépés, a törtrész első, legnagyobb helyiértéke 7. A legkisebb nem negatív maradék a 2 volt, shifteljük balra, az osztandónk most 20, osztó marad 4, az eredmény helyiértéke ismét csökken eggyel. 20 - 4 = 16, 16 - 4 = 12, 12 - 4 = 8, 8 - 4 = 4, 4 - 4 = 0. 5 lépés, tehát a maradék második tagja 5, így az eredmény: 2,75<br><br>
+		
+			A példa az egyszerűbb megértésért tízes számrendszerben, kivonásokkal mutatja be az osztás lebontását összeadásokra, de természetesen ez binárisan és kivonások helyett kettes komplementer összeadásokkal zajlik.<br>
+	</p>
+	<br>
+	<button style="color: rgb(89, 248, 232); background: transparent;margin-top: -30px;border-top: 2px; border-right: 0px; border-bottom: 0px; border-left: 0px; border-style: dashed; padding: 4px;">                                                                                                                                                                                                                                            </button>
+	<br>
+	<button class="button" onclick="window.location.href='egyes-szer.html';">Egyes</button>
+	<button class="button-no-click">Kettes</button>
+	<button class="button" onclick="window.location.href='harmas-szr.html';">Hármas</button>
+	<button class="button" onclick="window.location.href='negyes-szr.html';">Négyes</button>
+	<button class="button" onclick="window.location.href='otos-szr.html';">Ötös</button>
+	<button class="button" onclick="window.location.href='hatos-szr.html';">Hatos</button>
+	<button class="button" onclick="window.location.href='hetes-szr.html';">Hetes</button>
+	<button class="button" onclick="window.location.href='nyolcas-szr.html';">Nyolcas</button>
+	<button class="button" onclick="window.location.href='tizes-szr.html';">Tízes</button>
+	<button class="button" onclick="window.location.href='tizenkettes-szr.html';">Tizenkettes</button>
+	<button class="button" onclick="window.location.href='tizenhatos-szr.html';">Tizenhatos</button>
+	<button class="button" onclick="window.location.href='huszas-szr.html';">Húszas</button>
+	<button class="button" onclick="window.location.href='hatvanas-szr.html';">Hatvanas</button>
+	<br>
+	<br>
+	<a href="https://hu.wikipedia.org/wiki/Kettes_sz%C3%A1mrendszer"><button style="margin-left: 90%;" class="button-wiki"> Forrás: wikipédia</button></a>
+	
+</body>
+<script src="script.js"></script>
+</html>

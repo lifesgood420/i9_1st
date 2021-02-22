@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link REL=StyleSheet HREF="style.css" TYPE="text/css">
+	<title>WikiNow - Tizenhatos Számrendszer</title>
+</head>
+<body>
+	<button class="button" onclick="window.location.href='index.html';">Vissza</button> 
+
+	<h1>A tizenhatos számrendszer</h1>
+
+	<p>
+		A tizenhatos (hexadecimális) számrendszer a 16-os számon alapuló számrendszer, az informatika kulcsfontosságú számrendszere (zsargonban: hexa).
+		<br><br>
+		A tizenhatos számrendszer a <inline id="highlight">0, 1, 2, 3, 4, 5, 6, 7, 8, 9</inline> számjegyeken kívül az <inline id="highlight">A, B, C, D, E, F</inline> betűket (vagy ezeknek kisbetűs megfelelőjét;<br>
+		mindkettő használat megengedett) használja, ezek segítségével ábrázolja a valós és komplex számokat.
+		<br><br>
+		A 0–9 számjegyek használata értelemszerű (azaz: a tízes számrendszernek megfelelő);<br>
+		az <inline id="highlight">A számjegy 10-et, a B számjegy 11-et, a C számjegy 12-t, a D számjegy 13-at, az E számjegy 14-et, míg az F számjegy 15–öt</inline> jelöl<br>
+		(ez összesen 16 számjegy, tekintettel arra, hogy a nulla az első). 
+		<br><br>
+		Az eltérő számrendszer használatára általában a szám után írt alsó indexes H betű utal, például: C9H.<br>
+		A tizenhatos számrendszerben leírt szám számjegyei tulajdonképpen a tizenhatos szám 0-val kezdődő és számjegyenként eggyel növekvő exponensei<br>
+		a szám legkisebb helyiértékű számjegyeitől haladva a legnagyobb helyiértékűekig (azaz jobbról balra).
+		<br><br>
+		A hexadecimális kifejezés a görög nyelv έξι (hexi) szavából (jelentése: hat) és latin nyelv decem (jelentése: tíz) szavaiból származik.
+	</p>
+
+	<h2>A hexadecimális szám felírási módjai</h2>
+
+	<div id="p-alt">
+		Mivel az egyes programozási nyelvekben gyakran fordulnak elő hexadecimális számok<br>
+		és mivel a programozási nyelvek sokrétűek és fejlődésük hektikus,<br>
+		ezért a hexadecimális számok felírása is különböző:<br>
+		<ul>
+			<li>
+				az Ada és VHDL programozási nyelvek a számot egy "numerikus idézőjelbe" ("#" karakter) teszik "#" (például "20#5A3#"),
+			</li>
+			<li>
+				a C programozási nyelv és a rajta alapuló nyelvek (például a Java programozási nyelv) a <b>0x</b> prefixet használja (például <b>0x5A3</b>). A <b>0</b> azt jelenti a fordítóprogram számára, hogy számról van szó, az <b>x</b> pedig azt, hogy hexadecimális számról,
+			</li>
+			<li>
+				a HTML nyelvben szintén az <b>x</b> karakter használatos, például a decimális <b>& #1443</b> hexadecimális megfelelője az <b>& #x5a3</b><br>
+				<inline id="highlight">(utóbbi kettő speciális karaktert egybe kell leírni, csak abban az esetben az oldal regisztrálná és nem lenne ott semmi)</inline>,
+			</li>
+			<li>
+				Pascal-ban és néhány Assembly-ben a szám mögé egy <b>h</b> betűt írunk; ha a szám betűkarakterrel kezdődne, akkor elé még egy nullát is, példák:<br>
+				<b>0A3Ch</b>, <b>5A3h</b>,
+			</li>
+			<li>
+				a többi Assembly-ben (AT&T, Motorola) és néhány Basic nyelvjárásban, a Turbo Pascal-ban, és a Delphiben a <b>$</b> prefix használatos (például <b>$5A3</b>),
+			</li>
+			<li>
+				a többi Basic-ben a <b>&h</b> karakterek használatosak (<b>&h5A3</b>),
+			</li>
+		</ul>
+	</div>
+
+	<h2>Átváltása</h2>
+
+	<div id="p-alt-no-hover">
+
+		<un>
+
+		Átváltás 10 alapú számrendszerből tizenhatos számrendszerbe
+		<br><br>
+		A sorozatos osztás módszere
+		<li style="margin-bottom: 15px;">
+			<inline style="margin-top: 2px; margin-left: 10px;">
+				Az előző módszer finomítása a sorozatos osztás módszere. Ahelyett, hogy egyből a lehető legnagyobb hatvánnyal osztanánk,<br>
+				az új alappal osztunk sorozatosan, így a kisebb egységektől haladunk a nagyobbak felé. A maradékok az egyre nagyobb egységek számát jelzik.<br>
+				Előnye, hogy nem kell előre megbecsülni, hogy mekkora a lehető legnagyobb hatvány, ami még nem kisebb az adott számnál.
+				<br><br>
+				Az eredeti számot maradékosan osztjuk tizenhattal, így megkapjuk, hány tizenhatos lenne benne. A maradék az egyesek számát adja.<br>
+				Megnézzük, hogy van-e elég tizenhatos ahhoz, hogy egy nagyobb egységet képezzen. Ha van, akkor egy maradékos osztással megkapjuk,<br>
+				hány tizenhatost nem lehet egy nagyobb egységre beváltani. Ismételjük az osztásokat, amíg nem kapunk egy tizenhatnál kisebb számot.<br>
+				Ez lesz a tizenhatos számrendszerbe átírt szám első jegye. A többi jegyét fordított sorrendben adják a maradékok. 
+			</inline>
+		</li>
+
+		A sorozatos szorzás módszere
+		<li style="margin-bottom: 15px;">
+			<inline style="margin-top: 2px; margin-left: 10px;">
+				Az előbbi módszerekkel csak egész számokat tudunk átváltani. A sorozatos szorzás módszerével azonban a tizedestörtek is átválthatók.<br>
+				A nem egész számok a számrendszerben „tizenhatodostörtekként” ìrhatók fel.
+				<br><br>
+				Feltehetjük, hogy a tizedestört nulla és egy közé esik. Szorozzuk meg a tizedestörtet tizenhattal, és vegyük az egészrészét.<br>
+				Ez megadja a tizenhatodostört első jegyét. A másodszori szorzás eredményének egészrészeként a tizenhatodostört második jegyét kapjuk, és így tovább.
+				<br><br>
+				Véges tizenhatodostört esetén az eljárás véget ér. Más racionális számok esetén elég addig alkalmazni a módszert, amíg egy teljes szakaszt nem kapunk.<br>
+				Irracionális számokra az eljárás nem ér véget. Így csak az első <b>n</b> jegyet kaphatjuk meg.
+				<br><br>
+				Ha egy valós számnak van egészrésze és törtrésze is, akkor ezt a módszert az előző kettő valamelyikével kell kombinálni. 
+			</inline>
+		</li>
+
+		Átváltás tizenhatos számrendszerből 10 alapú számrendszerbe
+		<li style="margin-bottom: 15px;">
+			<inline style="margin-top: 2px; margin-left: 10px;">
+				Alkalmazhatók a fordított irány esetén használt módszerek.<br>
+				Mivel csak a decimális számrendszerben szoktunk számolni, ezért egyszerűbb lehet, ha használjuk a következő képletet: <br>
+				<img src="https://wikimedia.org/api/rest_v1/media/math/render/svg/2e37075ec5a55324cc709f34ccbfa0b9f0e048d1" style="background-color: white; padding: 4px; border-radius: 4px;"><br>
+				Kétjegyű számokra különösen egyszerű. Szorozzuk az első jegyet tizenhattal, és adjuk hozzá a második jegyet.<br>
+				A 0 és a 255 közötti számok átszámításának megkönnyítésére szolgál az <b>átszámolási táblázat</b>.
+			</inline>
+		</li>
+		
+		<br><br>
+
+		Átszámolási táblázat:
+
+		<table>
+			<th>HEX
+			</th>
+			<th><tt>00</tt>
+			</th>
+			<th><tt>01</tt>
+			</th>
+			<th><tt>02</tt>
+			</th>
+			<th><tt>03</tt>
+			</th>
+			<th><tt>04</tt>
+			</th>
+			<th><tt>05</tt>
+			</th>
+			<th><tt>06</tt>
+			</th>
+			<th><tt>07</tt>
+			</th>
+			<th><tt>08</tt>
+			</th>
+			<th><tt>09</tt>
+			</th>
+			<th><tt>0A</tt>
+			</th>
+			<th><tt>0B</tt>
+			</th>
+			<th><tt>0C</tt>
+			</th>
+			<th><tt>0D</tt>
+			</th>
+			<th><tt>0E</tt>
+			</th>
+			<th><tt>0F</tt>
+			</th></tr>
+			<tr>
+			<th><tt>00</tt>
+			</th>
+			<td align="center"><tt>0</tt>
+			</td>
+			<td align="center"><tt>1</tt>
+			</td>
+			<td align="center"><tt>2</tt>
+			</td>
+			<td align="center"><tt>3</tt>
+			</td>
+			<td align="center"><tt>4</tt>
+			</td>
+			<td align="center"><tt>5</tt>
+			</td>
+			<td align="center"><tt>6</tt>
+			</td>
+			<td align="center"><tt>7</tt>
+			</td>
+			<td align="center"><tt>8</tt>
+			</td>
+			<td align="center"><tt>9</tt>
+			</td>
+			<td align="center"><tt>10</tt>
+			</td>
+			<td align="center"><tt>11</tt>
+			</td>
+			<td align="center"><tt>12</tt>
+			</td>
+			<td align="center"><tt>13</tt>
+			</td>
+			<td align="center"><tt>14</tt>
+			</td>
+			<td align="center"><tt>15</tt>
+			</td></tr>
+			<tr>
+			<th><tt>10</tt>
+			</th>
+			<td align="center"><tt>16</tt>
+			</td>
+			<td align="center"><tt>17</tt>
+			</td>
+			<td align="center"><tt>18</tt>
+			</td>
+			<td align="center"><tt>19</tt>
+			</td>
+			<td align="center"><tt>20</tt>
+			</td>
+			<td align="center"><tt>21</tt>
+			</td>
+			<td align="center"><tt>22</tt>
+			</td>
+			<td align="center"><tt>23</tt>
+			</td>
+			<td align="center"><tt>24</tt>
+			</td>
+			<td align="center"><tt>25</tt>
+			</td>
+			<td align="center"><tt>26</tt>
+			</td>
+			<td align="center"><tt>27</tt>
+			</td>
+			<td align="center"><tt>28</tt>
+			</td>
+			<td align="center"><tt>29</tt>
+			</td>
+			<td align="center"><tt>30</tt>
+			</td>
+			<td align="center"><tt>31</tt>
+			</td></tr>
+			<tr>
+			<th><tt>20</tt>
+			</th>
+			<td align="center"><tt>32</tt>
+			</td>
+			<td align="center"><tt>33</tt>
+			</td>
+			<td align="center"><tt>34</tt>
+			</td>
+			<td align="center"><tt>35</tt>
+			</td>
+			<td align="center"><tt>36</tt>
+			</td>
+			<td align="center"><tt>37</tt>
+			</td>
+			<td align="center"><tt>38</tt>
+			</td>
+			<td align="center"><tt>39</tt>
+			</td>
+			<td align="center"><tt>40</tt>
+			</td>
+			<td align="center"><tt>41</tt>
+			</td>
+			<td align="center"><tt>42</tt>
+			</td>
+			<td align="center"><tt>43</tt>
+			</td>
+			<td align="center"><tt>44</tt>
+			</td>
+			<td align="center"><tt>45</tt>
+			</td>
+			<td align="center"><tt>46</tt>
+			</td>
+			<td align="center"><tt>47</tt>
+			</td></tr>
+			<tr>
+			<th><tt>30</tt>
+			</th>
+			<td align="center"><tt>48</tt>
+			</td>
+			<td align="center"><tt>49</tt>
+			</td>
+			<td align="center"><tt>50</tt>
+			</td>
+			<td align="center"><tt>51</tt>
+			</td>
+			<td align="center"><tt>52</tt>
+			</td>
+			<td align="center"><tt>53</tt>
+			</td>
+			<td align="center"><tt>54</tt>
+			</td>
+			<td align="center"><tt>55</tt>
+			</td>
+			<td align="center"><tt>56</tt>
+			</td>
+			<td align="center"><tt>57</tt>
+			</td>
+			<td align="center"><tt>58</tt>
+			</td>
+			<td align="center"><tt>59</tt>
+			</td>
+			<td align="center"><tt>60</tt>
+			</td>
+			<td align="center"><tt>61</tt>
+			</td>
+			<td align="center"><tt>62</tt>
+			</td>
+			<td align="center"><tt>63</tt>
+			</td></tr>
+			<tr>
+			<th><tt>40</tt>
+			</th>
+			<td align="center"><tt>64</tt>
+			</td>
+			<td align="center"><tt>65</tt>
+			</td>
+			<td align="center"><tt>66</tt>
+			</td>
+			<td align="center"><tt>67</tt>
+			</td>
+			<td align="center"><tt>68</tt>
+			</td>
+			<td align="center"><tt>69</tt>
+			</td>
+			<td align="center"><tt>70</tt>
+			</td>
+			<td align="center"><tt>71</tt>
+			</td>
+			<td align="center"><tt>72</tt>
+			</td>
+			<td align="center"><tt>73</tt>
+			</td>
+			<td align="center"><tt>74</tt>
+			</td>
+			<td align="center"><tt>75</tt>
+			</td>
+			<td align="center"><tt>76</tt>
+			</td>
+			<td align="center"><tt>77</tt>
+			</td>
+			<td align="center"><tt>78</tt>
+			</td>
+			<td align="center"><tt>79</tt>
+			</td></tr>
+			<tr>
+			<th><tt>50</tt>
+			</th>
+			<td align="center"><tt>80</tt>
+			</td>
+			<td align="center"><tt>81</tt>
+			</td>
+			<td align="center"><tt>82</tt>
+			</td>
+			<td align="center"><tt>83</tt>
+			</td>
+			<td align="center"><tt>84</tt>
+			</td>
+			<td align="center"><tt>85</tt>
+			</td>
+			<td align="center"><tt>86</tt>
+			</td>
+			<td align="center"><tt>87</tt>
+			</td>
+			<td align="center"><tt>88</tt>
+			</td>
+			<td align="center"><tt>89</tt>
+			</td>
+			<td align="center"><tt>90</tt>
+			</td>
+			<td align="center"><tt>91</tt>
+			</td>
+			<td align="center"><tt>92</tt>
+			</td>
+			<td align="center"><tt>93</tt>
+			</td>
+			<td align="center"><tt>94</tt>
+			</td>
+			<td align="center"><tt>95</tt>
+			</td></tr>
+			<tr>
+			<th><tt>60</tt>
+			</th>
+			<td align="center"><tt>96</tt>
+			</td>
+			<td align="center"><tt>97</tt>
+			</td>
+			<td align="center"><tt>98</tt>
+			</td>
+			<td align="center"><tt>99</tt>
+			</td>
+			<td align="center"><tt>100</tt>
+			</td>
+			<td align="center"><tt>101</tt>
+			</td>
+			<td align="center"><tt>102</tt>
+			</td>
+			<td align="center"><tt>103</tt>
+			</td>
+			<td align="center"><tt>104</tt>
+			</td>
+			<td align="center"><tt>105</tt>
+			</td>
+			<td align="center"><tt>106</tt>
+			</td>
+			<td align="center"><tt>107</tt>
+			</td>
+			<td align="center"><tt>108</tt>
+			</td>
+			<td align="center"><tt>109</tt>
+			</td>
+			<td align="center"><tt>110</tt>
+			</td>
+			<td align="center"><tt>111</tt>
+			</td></tr>
+			<tr>
+			<th><tt>70</tt>
+			</th>
+			<td align="center"><tt>112</tt>
+			</td>
+			<td align="center"><tt>113</tt>
+			</td>
+			<td align="center"><tt>114</tt>
+			</td>
+			<td align="center"><tt>115</tt>
+			</td>
+			<td align="center"><tt>116</tt>
+			</td>
+			<td align="center"><tt>117</tt>
+			</td>
+			<td align="center"><tt>118</tt>
+			</td>
+			<td align="center"><tt>119</tt>
+			</td>
+			<td align="center"><tt>120</tt>
+			</td>
+			<td align="center"><tt>121</tt>
+			</td>
+			<td align="center"><tt>122</tt>
+			</td>
+			<td align="center"><tt>123</tt>
+			</td>
+			<td align="center"><tt>124</tt>
+			</td>
+			<td align="center"><tt>125</tt>
+			</td>
+			<td align="center"><tt>126</tt>
+			</td>
+			<td align="center"><tt>127</tt>
+			</td></tr>
+			<tr>
+			<th><tt>80</tt>
+			</th>
+			<td align="center"><tt>128</tt>
+			</td>
+			<td align="center"><tt>129</tt>
+			</td>
+			<td align="center"><tt>130</tt>
+			</td>
+			<td align="center"><tt>131</tt>
+			</td>
+			<td align="center"><tt>132</tt>
+			</td>
+			<td align="center"><tt>133</tt>
+			</td>
+			<td align="center"><tt>134</tt>
+			</td>
+			<td align="center"><tt>135</tt>
+			</td>
+			<td align="center"><tt>136</tt>
+			</td>
+			<td align="center"><tt>137</tt>
+			</td>
+			<td align="center"><tt>138</tt>
+			</td>
+			<td align="center"><tt>139</tt>
+			</td>
+			<td align="center"><tt>140</tt>
+			</td>
+			<td align="center"><tt>141</tt>
+			</td>
+			<td align="center"><tt>142</tt>
+			</td>
+			<td align="center"><tt>143</tt>
+			</td></tr>
+			<tr>
+			<th><tt>90</tt>
+			</th>
+			<td align="center"><tt>144</tt>
+			</td>
+			<td align="center"><tt>145</tt>
+			</td>
+			<td align="center"><tt>146</tt>
+			</td>
+			<td align="center"><tt>147</tt>
+			</td>
+			<td align="center"><tt>148</tt>
+			</td>
+			<td align="center"><tt>149</tt>
+			</td>
+			<td align="center"><tt>150</tt>
+			</td>
+			<td align="center"><tt>151</tt>
+			</td>
+			<td align="center"><tt>152</tt>
+			</td>
+			<td align="center"><tt>153</tt>
+			</td>
+			<td align="center"><tt>154</tt>
+			</td>
+			<td align="center"><tt>155</tt>
+			</td>
+			<td align="center"><tt>156</tt>
+			</td>
+			<td align="center"><tt>157</tt>
+			</td>
+			<td align="center"><tt>158</tt>
+			</td>
+			<td align="center"><tt>159</tt>
+			</td></tr>
+			<tr>
+			<th><tt>A0</tt>
+			</th>
+			<td align="center"><tt>160</tt>
+			</td>
+			<td align="center"><tt>161</tt>
+			</td>
+			<td align="center"><tt>162</tt>
+			</td>
+			<td align="center"><tt>163</tt>
+			</td>
+			<td align="center"><tt>164</tt>
+			</td>
+			<td align="center"><tt>165</tt>
+			</td>
+			<td align="center"><tt>166</tt>
+			</td>
+			<td align="center"><tt>167</tt>
+			</td>
+			<td align="center"><tt>168</tt>
+			</td>
+			<td align="center"><tt>169</tt>
+			</td>
+			<td align="center"><tt>170</tt>
+			</td>
+			<td align="center"><tt>171</tt>
+			</td>
+			<td align="center"><tt>172</tt>
+			</td>
+			<td align="center"><tt>173</tt>
+			</td>
+			<td align="center"><tt>174</tt>
+			</td>
+			<td align="center"><tt>175</tt>
+			</td></tr>
+			<tr>
+			<th><tt>B0</tt>
+			</th>
+			<td align="center"><tt>176</tt>
+			</td>
+			<td align="center"><tt>177</tt>
+			</td>
+			<td align="center"><tt>178</tt>
+			</td>
+			<td align="center"><tt>179</tt>
+			</td>
+			<td align="center"><tt>180</tt>
+			</td>
+			<td align="center"><tt>181</tt>
+			</td>
+			<td align="center"><tt>182</tt>
+			</td>
+			<td align="center"><tt>183</tt>
+			</td>
+			<td align="center"><tt>184</tt>
+			</td>
+			<td align="center"><tt>185</tt>
+			</td>
+			<td align="center"><tt>186</tt>
+			</td>
+			<td align="center"><tt>187</tt>
+			</td>
+			<td align="center"><tt>188</tt>
+			</td>
+			<td align="center"><tt>189</tt>
+			</td>
+			<td align="center"><tt>190</tt>
+			</td>
+			<td align="center"><tt>191</tt>
+			</td></tr>
+			<tr>
+			<th><tt>C0</tt>
+			</th>
+			<td align="center"><tt>192</tt>
+			</td>
+			<td align="center"><tt>193</tt>
+			</td>
+			<td align="center"><tt>194</tt>
+			</td>
+			<td align="center"><tt>195</tt>
+			</td>
+			<td align="center"><tt>196</tt>
+			</td>
+			<td align="center"><tt>197</tt>
+			</td>
+			<td align="center"><tt>198</tt>
+			</td>
+			<td align="center"><tt>199</tt>
+			</td>
+			<td align="center"><tt>200</tt>
+			</td>
+			<td align="center"><tt>201</tt>
+			</td>
+			<td align="center"><tt>202</tt>
+			</td>
+			<td align="center"><tt>203</tt>
+			</td>
+			<td align="center"><tt>204</tt>
+			</td>
+			<td align="center"><tt>205</tt>
+			</td>
+			<td align="center"><tt>206</tt>
+			</td>
+			<td align="center"><tt>207</tt>
+			</td></tr>
+			<tr>
+			<th><tt>D0</tt>
+			</th>
+			<td align="center"><tt>208</tt>
+			</td>
+			<td align="center"><tt>209</tt>
+			</td>
+			<td align="center"><tt>210</tt>
+			</td>
+			<td align="center"><tt>211</tt>
+			</td>
+			<td align="center"><tt>212</tt>
+			</td>
+			<td align="center"><tt>213</tt>
+			</td>
+			<td align="center"><tt>214</tt>
+			</td>
+			<td align="center"><tt>215</tt>
+			</td>
+			<td align="center"><tt>216</tt>
+			</td>
+			<td align="center"><tt>217</tt>
+			</td>
+			<td align="center"><tt>218</tt>
+			</td>
+			<td align="center"><tt>219</tt>
+			</td>
+			<td align="center"><tt>220</tt>
+			</td>
+			<td align="center"><tt>221</tt>
+			</td>
+			<td align="center"><tt>222</tt>
+			</td>
+			<td align="center"><tt>223</tt>
+			</td></tr>
+			<tr>
+			<th><tt>E0</tt>
+			</th>
+			<td align="center"><tt>224</tt>
+			</td>
+			<td align="center"><tt>225</tt>
+			</td>
+			<td align="center"><tt>226</tt>
+			</td>
+			<td align="center"><tt>227</tt>
+			</td>
+			<td align="center"><tt>228</tt>
+			</td>
+			<td align="center"><tt>229</tt>
+			</td>
+			<td align="center"><tt>230</tt>
+			</td>
+			<td align="center"><tt>231</tt>
+			</td>
+			<td align="center"><tt>232</tt>
+			</td>
+			<td align="center"><tt>233</tt>
+			</td>
+			<td align="center"><tt>234</tt>
+			</td>
+			<td align="center"><tt>235</tt>
+			</td>
+			<td align="center"><tt>236</tt>
+			</td>
+			<td align="center"><tt>237</tt>
+			</td>
+			<td align="center"><tt>238</tt>
+			</td>
+			<td align="center"><tt>239</tt>
+			</td></tr>
+			<tr>
+			<th><tt>F0</tt>
+			</th>
+			<td align="center"><tt>240</tt>
+			</td>
+			<td align="center"><tt>241</tt>
+			</td>
+			<td align="center"><tt>242</tt>
+			</td>
+			<td align="center"><tt>243</tt>
+			</td>
+			<td align="center"><tt>244</tt>
+			</td>
+			<td align="center"><tt>245</tt>
+			</td>
+			<td align="center"><tt>246</tt>
+			</td>
+			<td align="center"><tt>247</tt>
+			</td>
+			<td align="center"><tt>248</tt>
+			</td>
+			<td align="center"><tt>249</tt>
+			</td>
+			<td align="center"><tt>250</tt>
+			</td>
+			<td align="center"><tt>251</tt>
+			</td>
+			<td align="center"><tt>252</tt>
+			</td>
+			<td align="center"><tt>253</tt>
+			</td>
+			<td align="center"><tt>254</tt>
+			</td>
+			<td align="center"><tt>255</tt>
+			</td></tr>
+		</table>
+
+		Átváltás más 2-hatvány alapú számrendszerekbe és Vissza
+		<br><br>
+		Tizenhatos számrendszerbeli számot különösen egyszerű egy másik 2-hatvány alakú számrendszerbe átírni. Ezt azért lehetséges, mert 16 is 2 hatványa. 
+		<br><br>
+		Kettes számrendszerbe
+		<li style="margin-bottom: 15px;">
+			<inline style="margin-top: 2px; margin-left: 10px;">
+				Helyettesítsünk minden jegyet azok <a href="kettes-szr.html">kettes számrendszerbeli</a> alakjával. 
+			</inline>
+		</li>
+
+		Kettes számrendszerből
+		<li style="margin-bottom: 15px;">
+			<inline style="margin-top: 2px; margin-left: 10px;">
+				Az eljárás az előbbi fordítottja. Osszuk a biteket hátulról kezdve négyes csoportokra,<br>
+				és helyettesítsünk minden négyest tizenhatos számrendszerbeli alakjával. 
+			</inline>
+		</li>
+
+		Nyolcas számrendszerbe
+		<li style="margin-bottom: 15px;">
+			<inline style="margin-top: 2px; margin-left: 10px;">
+				Ez az átváltás az előzőekhez hasonlóan végezhető el. Ehhez segítségül hívjuk a kettes számrendszert.<br>
+				Először a tizenhatos számrendszerben megadott számot átírjuk kettes számrendszerbe, majd onnan tovább nyolcas számrendszerbe:<br>
+				a biteket hátulról kezdve hármas csoportokba osztjuk, és minden hármas helyett azok <a href="nyolcas-szr.html">nyolcas számrendszerbeli</a> alakját írjuk.
+			</inline>
+		</li>
+
+		Négyes számrendszerbe és onnan
+		<li style="margin-bottom: 15px;">
+			<inline style="margin-top: 2px; margin-left: 10px;">
+				Lásd: <a href="negyes-szr.html">négyes számrendszer</a>
+			</inline>
+		</li>
+
+		Nyolcas számrendszerből
+		<li style="margin-bottom: 15px;">
+			<inline style="margin-top: 2px; margin-left: 10px;">
+				Az előző algoritmus fordítottjával az átváltás ebben az irányban is egyszerű. 
+			</inline>
+		</li>
+
+		</un>
+
+	</div>
+
+	<br>
+	<button style="color: rgb(89, 248, 232); background: transparent;margin-top: -30px;border-top: 2px; border-right: 0px; border-bottom: 0px; border-left: 0px; border-style: dashed; padding: 4px;">                                                                                                                                                                                                                                                                                                                                                                        </button>
+	<br>
+	<button class="button" onclick="window.location.href='egyes-szer.html';">Egyes</button>
+	<button class="button" onclick="window.location.href='kettes-szr.html';">Kettes</button>
+	<button class="button" onclick="window.location.href='harmas-szr.html';">Hármas</button>
+	<button class="button" onclick="window.location.href='negyes-szr.html';">Négyes</button>
+	<button class="button" onclick="window.location.href='otos-szr.html';">Ötös</button>
+	<button class="button" onclick="window.location.href='hatos-szr.html';">Hatos</button>
+	<button class="button" onclick="window.location.href='hetes-szr.html';">Hetes</button>
+	<button class="button" onclick="window.location.href='nyolcas-szr.html';">Nyolcas</button>
+	<button class="button" onclick="window.location.href='tizes-szr.html';">Tízes</button>
+	<button class="button" onclick="window.location.href='tizenkettes-szr.html';">Tizenkettes</button>
+	<button class="button-no-click">Tizenhatos</button>
+	<button class="button" onclick="window.location.href='huszas-szr.html';">Húszas</button>
+	<button class="button" onclick="window.location.href='hatvanas-szr.html';">Hatvanas</button>
+	<br>
+	<br>
+	<a href="https://hu.wikipedia.org/wiki/Tizenhatos_sz%C3%A1mrendszer"><button style="margin-left: 90%;" class="button-wiki"> Forrás: wikipédia</button></a>
+    
+</body>
+</html>
